@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+
+
 const Result = ({results}) => {
     let [bg, setBg] = useState("");
   
