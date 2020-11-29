@@ -4,8 +4,23 @@ import fetch from 'isomorphic-unfetch'
 import dayjs from 'dayjs'
 import Result from '../components/result';
 import MCTForm from '../components/mctform';
+import { NextPage } from 'next'
 
-const Home = ({data}) => {
+
+interface props{
+  date?: string
+  calories? : number
+  carbs? : number
+  fat? : number
+  protein? : number
+  getInitialProps : void
+}
+
+interface Newprops{
+  data : props
+}
+
+const Home:NextPage<Newprops> = ({data}) => {
   const [results, setResults] = useState(data);
 
   const onChange = (e) => {
@@ -94,7 +109,7 @@ const Home = ({data}) => {
   </div>
 )}
 
-Home.getInitialProps = async () => {
+Home.getInitialProps = async (ctx) => {
   const res = await fetch('http://localhost:3000/api/daily')
   const json = await res.json()
   return { data: json }
