@@ -5,20 +5,11 @@ import dayjs from 'dayjs'
 import Result from '../components/result';
 import MCTForm from '../components/mctform';
 import { NextPage } from 'next'
+import { Newprops , props } from './types/types'
 
 
-interface props{
-  date?: string
-  calories? : number
-  carbs? : number
-  fat? : number
-  protein? : number
-  getInitialProps : void
-}
 
-interface Newprops{
-  data : props
-}
+
 
 const Home:NextPage<Newprops> = ({data}) => {
   const [results, setResults] = useState(data);

@@ -29,7 +29,6 @@ handler.post(async (req, res) => {
     let data = req.body
     data = JSON.parse(data);
     data.date = new Date(data.date);
-    console.log("datae " , data.date)
     let doc = await req.db.collection('daily').updateOne({date: new Date(data.date)}, {$set:data}, {upsert: true})
       console.log("rea" , doc)
     res.json({message: 'ok'});
