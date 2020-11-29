@@ -42,7 +42,7 @@ const Home:NextPage<Newprops> = ({data}) => {
     let newDate = currentDate.subtract(1, 'day').format('YYYY-MM-DDTHH:mm:ss')
     const res = await fetch('https://micro-compiler-tracker-app.vercel.app/api/daily?date=' + newDate)
     const json = await res.json()
-    
+     console.log("res are  given" , res)
     setResults(json);
   }
 
