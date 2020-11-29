@@ -39,7 +39,7 @@ const Home:NextPage<Newprops> = ({data}) => {
   const getDataForPreviousDay = async () => {
     let currentDate = dayjs(results.date);
     let newDate = currentDate.subtract(1, 'day').format('YYYY-MM-DDTHH:mm:ss')
-    const res = await fetch('http://localhost:3000/api/daily?date=' + newDate)
+    const res = await fetch('https://micro-compiler-tracker-jqz1a5bgg.vercel.app/api/daily?date=' + newDate)
     const json = await res.json()
     
     setResults(json);
@@ -48,14 +48,14 @@ const Home:NextPage<Newprops> = ({data}) => {
   const getDataForNextDay = async () => {
     let currentDate = dayjs(results.date);
     let newDate = currentDate.add(1, 'day').format('YYYY-MM-DDTHH:mm:ss')
-    const res = await fetch('http://localhost:3000/api/daily?date=' + newDate)
+    const res = await fetch('https://micro-compiler-tracker-jqz1a5bgg.vercel.app/api/daily?date=' + newDate)
     const json = await res.json()
     
     setResults(json);
   }
 
   const updateMacros = async () => {
-    const res = await fetch('http://localhost:3000/api/daily', {
+    const res = await fetch('https://micro-compiler-tracker-jqz1a5bgg.vercel.app/api/daily', {
       method: 'post',
       body: JSON.stringify(results)
     })
@@ -112,7 +112,7 @@ const Home:NextPage<Newprops> = ({data}) => {
 )}
 
 Home.getInitialProps = async (ctx) => {
-  const res = await fetch('http://localhost:3000/api/daily')
+  const res = await fetch('https://micro-compiler-tracker-jqz1a5bgg.vercel.app/api/daily')
   const json = await res.json()
   return { data: json }
 }
