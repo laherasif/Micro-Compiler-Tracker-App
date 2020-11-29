@@ -63,6 +63,8 @@ const Home:NextPage<Newprops> = ({data}) => {
     console.log(res);
   }
 
+
+    console.log("date" , results.date)
   return (
   <div>
     <Head>

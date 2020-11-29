@@ -7,8 +7,8 @@ const handler = nextConnect();
 handler.use(middleware);
 
 handler.get(async (req, res) => {
-      console.log("req" , req)
     const { date } = req.query;
+    console.log("req query" , date)
 
     const dataModel = { "_id": new ObjectID(), "date": date, "calories": { "label": "Calories", "total": 0, "target": 0, "variant": 0 }, "carbs": { "label": "Carbs", "total": 0, "target": 0, "variant": 0 }, "fat": { "label" : "Fat", "total": 0, "target": 0, "variant": 0 }, "protein": { "label" : "Protein", "total": 0, "target": 0, "variant": 0 }}
 
@@ -29,8 +29,9 @@ handler.post(async (req, res) => {
     let data = req.body
     data = JSON.parse(data);
     data.date = new Date(data.date);
+    console.log("datae " , data.date)
     let doc = await req.db.collection('daily').updateOne({date: new Date(data.date)}, {$set:data}, {upsert: true})
-
+      console.log("rea" , doc)
     res.json({message: 'ok'});
 })
 
